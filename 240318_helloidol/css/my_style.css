@@ -1,0 +1,10 @@
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    background-color: pink;
+    /* font color 아님 주의 */
+    color: #fafafa;
+}
+
