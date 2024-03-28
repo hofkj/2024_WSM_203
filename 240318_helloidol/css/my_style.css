@@ -64,3 +64,24 @@ li:nth-child(2n-1) {
 li:nth-child(odd) {
     color: purple;
 }
+
+#leader {
+    background-color: hotpink;
+}
+
+.korea{
+    background-color: gold;
+}
+
+.japan {
+    background-color: silver;
+}
+
+.incheon {
+    background-color: aqua;
+}
+
+/* [속성은="값"] */
+[type="text"] {
+    background-color: darkorange;
+}
