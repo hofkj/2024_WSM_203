@@ -2,9 +2,65 @@ body {
     background-color: antiquewhite;
 }
 
-h1 {
+h1, h3 {
     background-color: pink;
     /* font color 아님 주의 */
     color: #fafafa;
 }
 
+
+/* h1과 h3 자매. h1 아래 모든 h3에 적용 */
+h1 ~ h3 {
+    background-color: blueviolet;
+}
+
+
+h1 + h2,    /* h1과 h2 자매. h1 바로 아래 h2에 적용 */
+h3 + h2 {   /* h3과 h2 자매. h3 아래 모든 h2에 적용 */
+    background-color: chartreuse;
+}
+
+li {
+    background-color: chocolate;
+}
+
+ul > li {
+    background-color: aquamarine;
+}
+
+ul > ul > li {
+    background-color: cadetblue;
+}
+
+li:first-child {
+    font-size: 20pt;
+}
+
+/* li의 막내자식 x. 막내작식인데 li인 아이 */
+li:last-child {
+    font-size: 5pt;
+}
+
+/* 세번째 자식인데 걔가 li인 아이 */
+li:nth-child(3) {
+    font-size: 2pt;
+}
+
+/* 짝수번째 자식인데 걔가 li인 아이 */
+li:nth-child(2n) {
+    color: blue;
+}
+
+/* 위에랑 같은 애 */
+li:nth-child(even) {
+    text-decoration: overline;
+}
+
+/* 홀수번째 자식인데 걔가 li인 아이 */
+li:nth-child(2n-1) {
+    font-weight: bold;
+}
+
+li:nth-child(odd) {
+    color: purple;
+}
