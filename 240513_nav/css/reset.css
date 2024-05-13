@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;     /*크기의 기준을 content -> border*/
+}
+
+ul, ol {
+    list-style: none;
+        
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    /* 이미지 최대 너비가 창 크기를 넘지 않도록 하자 */
+}
