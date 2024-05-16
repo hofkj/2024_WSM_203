@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Nanum+Pen+Script&display=swap');
 
-/* css Varaibles */
+/* css Variables */
 :root {
     /* color */
     /* H: 컬러, S: 채도, L: 밝기 */
@@ -29,6 +29,6 @@
 
     /* nav */
     --nav-height: 44px;
-    
+
 
 }
