@@ -38,7 +38,7 @@ body {
 }
 
 body>header {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -98,6 +98,7 @@ nav {
         flex-direction: column;
         background-color: hsla(200, 100%, 25%, 0.6);
         z-index: -1;        /*nav 뒤로 보내자*/
+        backdrop-filter: blur(8px);
     }
 
     .nav-item {
