@@ -42,6 +42,8 @@ body>header {
     top: 0;
     right: 0;
     left: 0;
+    /* position 설정하면 가려짐 방지 */
+    z-index: 10;
 }
 
 nav {
