@@ -86,6 +86,10 @@
     
 }
 
+::placeholder {
+    font-size: var(--h3-font-size);
+}
+
 @media screen and (max-width : 800px) {
     .product-container {
         justify-content: center;
