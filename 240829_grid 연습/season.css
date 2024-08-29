@@ -1,0 +1,32 @@
+.container {
+    width: 800px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 30% 70%;         /* 1fr 1fr*/
+    grid-template-rows: 40% 60%;         /* 1fr 1fr*/
+}
+
+.item {
+    border: 1px solid gray;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    display: grid;
+    place-items: center;
+}
+
+.item:first-child {
+    background-color: springgreen;
+}
+
+.item:nth-child(2) {
+    background-color: red;
+}
+
+.item:nth-child(3) {
+    background-color: peru;
+}
+
+.item:last-child {
+    background-color: yellow;
+}
