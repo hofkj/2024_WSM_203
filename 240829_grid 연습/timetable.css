@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 800px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item {
+    border: 1px solid gray;
+    display: grid;
+    place-items: center;
+    color: olivedrab;
+    font-weight: bold;
+}
+
+.first-row {
+    background-color: orange;
+
+}
+
+.time {
+    background-color: moccasin;
+}
+
+/* .item:nth-child(6n+7) {
+    background-color: yellow;
+} */
+
+.mon-wsm {
+    grid-row:  span 2   ;
+    /* grid-row-start: 6;
+    grid-row-end: 8;
+    grid-column-start: 2;
+    grid-column-end: 3; */
+}
+
+.ct {
+    grid-row:  span 2   ;
+}
+
+.java {
+    grid-row:  span 2   ;
+}
+
+.python {
+    grid-row:  span 2   ;
+}
+
+.cs {
+    grid-row:  span 2   ;
+}
+
+.cc {
+    grid-row:  span 2   ;
+}
+
+.ds {
+    grid-row:  span 2   ;
+}
+
+.bb {
+    grid-row:  span 2   ;
+}
+
+.wsm {
+    grid-row:  span 2   ;
+}
