@@ -1,3 +1,4 @@
+/* 메인 */
 #school-market {
     margin-top: calc(var(--nav-height) + 100px);
     /* nav에 가려져서 안 보이는 문제 해결 */
@@ -49,6 +50,7 @@
 
 }
 
+/* 아티클 */
 .product-item{
     display: flex;
     flex-direction: column;
@@ -86,6 +88,7 @@
     
 }
 
+/* 서치바 */
 ::placeholder {
     font-size: var(--h3-font-size);
 }

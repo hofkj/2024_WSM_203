@@ -13,6 +13,7 @@
     margin-bottom: 50px;
 }
 
+/* 날짜 바꾸는 버튼 */
 .prev-date,
 .next-date {
     font-size: var(--h1-font-size);
@@ -21,6 +22,7 @@
     cursor: pointer;
 }
 
+/* 섹션 */
 .menu-container {
     width: 100%;
     padding: 0 100px;
@@ -28,9 +30,11 @@
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 80px;
+    /* 반응형 */
     row-gap: 40px;
 }
 
+/* 아티클 */
 .school-food-menu {
     max-width: 300px;
     padding: 20px;
@@ -52,11 +56,15 @@
 }
 
 @media screen and (max-width : 960px) {
+    /* 메인 */
     #school-food {
+        /* 메뉴들이 내려왔을 때 가려짐 */
         margin-top: calc(var(--nav-height) + 40px);
     }
 
+    /* 아티클 */
     .school-food-menu {
+    
         min-width: 100%;
     }
 
