@@ -21,8 +21,12 @@ for (const selectionItemDiv of selectionItemDivs) {
 
 }
 
-//select selection
-selectionItemDivs[page-1].classList.add("select");
+if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
+    //select selection
+    selectionItemDivs[page-1].classList.add("select");
+
+}
+
 
     //clear pages
     pageDivs.forEach(pageDiv => {
