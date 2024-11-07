@@ -37,7 +37,7 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
 }
 
 let allData;                //모든 초기화 정보 : 세탁기, 시간, 호실 정보
-let weeklyReservation;      //미리 요일별로 지정된 예약 정보
+let weeklyReservations;      //미리 요일별로 지정된 예약 정보
 let newReservation;         //사용자가 입력하고 있는 예약 정보
 let reservation;            //사용자가 예약 완료한 정보들
 
@@ -66,9 +66,7 @@ const intiData =  async () => {
     }
     
     allData = await getAllData("js/allData.json");
-    console.log(allData);
-    weeklyReservation = await getWeeklyReservation("js/weekly-reservation.json");
-    console.log(weeklyReservation);
+    weeklyReservations = await getWeeklyReservation("js/weekly-reservation.json");
 
 }
 
