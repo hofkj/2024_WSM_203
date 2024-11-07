@@ -6,8 +6,10 @@ const calendarDiv = document.getElementById("calendar");
 const selectionWashingmachineTimeDiv = document.getElementById("selection-washingmachine-time");
 const selectionRoomNameDiv = document.querySelector("#selection-room-name");
 const boardDiv = document.querySelector("#board");
-
 const pageDivs = [calendarDiv, selectionWashingmachineTimeDiv, selectionRoomNameDiv, boardDiv];
+const washingmachineSelect = document.getElementById("washingmachine");
+const timeSelect = document.querySelector("#time");
+
 
 // calendarDiv.style.display = "block";
 // selectionRoomNameDiv.style.display = "block";
@@ -34,6 +36,31 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
     })
     //show page
     pageDivs[page-1].style.display = "block";           //1페이지 : calendar, 2페이지 : swt, 3페이지 : srn, 4페이지 : board
+
+    //2페이지
+    if (page === 2) {           //세탁기, 시간
+        //         1, 2,3번 세탁기 1, 2, 3 시간 초기화
+        let allWashingmachineTime = {"1":["1", "2", "3"], "2":["1", "2", "3"], "3":["1", "2", "3"]};
+        // 클릭한 날짜와 요일 구하자
+        // 미림 예약된 예약을 보고, 예약된세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
+        // 초기화 항목에서 예약된 시간 뺸 후, 모든 시간이 없는 세탁기는 뺴자
+        //세탁기 select에 option 만들어 넣자
+        let washingmachines = Object.keys(allWashingmachineTime);              //["1", "2", "3"]
+        washingmachines.forEach((washingmachine) => {
+            let newOption = document.createElement("option"); //<option></option>
+            newOption.value = washingmachine;    //<option value="세탁기번호"></option>
+            newOption.textContent = `${washingmachine}번 세탁기`; //<option value="세탁기번호">세탁기 번호번 세탁기</option>
+            washingmachineSelect.appendChild(newOption); //washingmachineSelect에 자식으로 넣자
+        });
+        //시간 select에 option 만들어 넣자
+        // [다음] 클릭 => 세탁기 번호, 시간번호를 보관하자 => setPage(3)
+
+
+    } else if (page === 3) {            //호실, 이름
+
+    } else if (page === 4) {            //세탁기 예약 현황표
+
+    }
 }
 
 let allData;                //모든 초기화 정보 : 세탁기, 시간, 호실 정보
