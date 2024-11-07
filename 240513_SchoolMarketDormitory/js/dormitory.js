@@ -3,7 +3,7 @@ const selectionItemDivs = document.getElementsByClassName("selection-item");
 
 // 각 페이지 요소 가져오자
 const calendarDiv = document.getElementById("calendar");
-const selectionWashingmachineTimeDiv = document.getElementById("selection-wachingmachine-time");
+const selectionWashingmachineTimeDiv = document.getElementById("selection-washingmachine-time");
 const selectionRoomNameDiv = document.querySelector("#selection-room-name");
 const boardDiv = document.querySelector("#board");
 
@@ -70,6 +70,22 @@ const intiData =  async () => {
 
 }
 
+const clickDate = (event) => {
+    // console.log(event);
+    // console.log(event.target.textContent);
+    console.log(event.target.dataset.date);     //<div class="item" data-date="뭐시기">텍스트</div> => 뭐시기 
+    newReservation = {      //날짜, 세탁기, 시간, 호실, 이름, 알림
+        "date" : undefined,
+        "washingmachine" : undefined,
+        "time" : undefined,
+        "room" : undefined,
+        "name" : undefined,
+        "notification" : true,
+
+    }
+    newReservation.date = event.target.dataset.date;        //클릭한 날짜 정보 새 예약에 기록하자
+    setPage(2);     //2페이지로 이동하자
+}
 
 intiData();
 setPage(1);
