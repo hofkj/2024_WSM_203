@@ -39,21 +39,9 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
 
     //2페이지
     if (page === 2) {           //세탁기, 시간
-        //         1, 2,3번 세탁기 1, 2, 3 시간 초기화
-        let allWashingmachineTime = {"1":["1", "2", "3"], "2":["1", "2", "3"], "3":["1", "2", "3"]};
-        // 클릭한 날짜와 요일 구하자
-        // 미림 예약된 예약을 보고, 예약된세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
-        // 초기화 항목에서 예약된 시간 뺸 후, 모든 시간이 없는 세탁기는 뺴자
-        //세탁기 select에 option 만들어 넣자
-        let washingmachines = Object.keys(allWashingmachineTime);              //["1", "2", "3"]
-        washingmachines.forEach((washingmachine) => {
-            let newOption = document.createElement("option"); //<option></option>
-            newOption.value = washingmachine;    //<option value="세탁기번호"></option>
-            newOption.textContent = `${washingmachine}번 세탁기`; //<option value="세탁기번호">세탁기 번호번 세탁기</option>
-            washingmachineSelect.appendChild(newOption); //washingmachineSelect에 자식으로 넣자
-        });
-        //시간 select에 option 만들어 넣자
-        // [다음] 클릭 => 세탁기 번호, 시간번호를 보관하자 => setPage(3)
+       
+        initWashingmachineTime();
+        
 
 
     } else if (page === 3) {            //호실, 이름
@@ -116,4 +104,48 @@ const clickDate = (event) => {
 
 intiData();
 setPage(1);
+
+const initWashingmachineTime = () => {
+     //  1, 2,3번 세탁기 1, 2, 3 시간 초기화
+     //{"1":["1", "2", "3"], "2":["1", "2", "3"], "3":["1", "2", "3"]};
+    let allWashingmachineTime = {};
+
+    //초기 세팅하자
+    allData.washingmachine.forEach((washingmachine) => {        //1, 2, 3
+        allWashingmachineTime[washingmachine] = Object.keys(allData.time);        //{"1": ["1", "2", "3"]}
+    });
+
+        // 클릭한 날짜와 요일 구하자
+        // 미림 예약된 예약을 보고, 예약된세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
+        // 초기화 항목에서 예약된 시간 뺸 후, 모든 시간이 없는 세탁기는 뺴자
+        //세탁기 select에 option 만들어 넣자
+        washingmachineSelect.innerHTML = ""; //세탁기 옵션 없애자
+    let washingmachines = Object.keys(allWashingmachineTime); //["1", "2", "3"]
+    washingmachines.forEach((washingmachine) => {
+        let newOption = document.createElement("option"); //<option></option>
+        newOption.value = washingmachine; //<option value="세탁기번호"></option>
+        newOption.textContent = `${washingmachine}번 세탁기`; //<option value="세탁기번호">세탁기 번호번 세탁기</option>
+        washingmachineSelect.appendChild(newOption); //washingmachineSelect에 자식으로 넣자
+    });
+    //시간 select에 option 만들어 넣자
+    const setTimeSelect = (event) => {
+        timeSelect.innerHTML = ""; //시간 옵션 없애자
+        const selectedWashingmachine = washingmachineSelect.value;
+        let times = allWashingmachineTime[selectedWashingmachine]; //["1", "2", "3"]
+        times.forEach((time) => {
+            let newOption = document.createElement("option"); //<option></option>
+            newOption.value = time; //<option value="시간값("1", "2", "3" 중 하나)"></option>
+            newOption.textContent = allData["time"][time]; //<option value="시간값("1", "2", "3" 중 하나)">7시 ~ 8시 10분</option>
+
+            //"1" => "7시 8시 10분", "2" => "8시 10분 ~ 9시 20분"
+            timeSelect.appendChild(newOption);
+        });
+
+    };
+
+    setTimeSelect();
+    //세탁기 번호가 바뀌면, setTimeSelect() 호출하자
+    washingmachineSelect.onchange = (event) => setTimeSelect(event);
+    // [다음] 클릭 => 세탁기 번호, 시간번호를 보관하자 => setPage(3)
+}
 
