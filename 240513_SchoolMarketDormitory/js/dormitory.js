@@ -9,6 +9,8 @@ const boardDiv = document.querySelector("#board");
 const pageDivs = [calendarDiv, selectionWashingmachineTimeDiv, selectionRoomNameDiv, boardDiv];
 const washingmachineSelect = document.getElementById("washingmachine");
 const timeSelect = document.querySelector("#time");
+const roomSelect = document.getElementById("room"); //이거 시험 문제
+const nameInput = document.querySelector("#name");  //**
 
 
 // calendarDiv.style.display = "block";
@@ -45,6 +47,11 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
 
 
     } else if (page === 3) {            //호실, 이름
+        //세탁기,시간 번호 기록하자
+        newReservation.washingmachine = washingmachineSelect.value;
+        newReservation.time = timeSelect.value;
+
+        initRoomName();
 
     } else if (page === 4) {            //세탁기 예약 현황표
 
@@ -170,3 +177,38 @@ const initWashingmachineTime = () => {
     // [다음] 클릭 => 세탁기 번호, 시간번호를 보관하자 => setPage(3)
 }
 
+const initRoomName = () => {
+    //모든 호실 표시하자
+    let rooms = allData.room; //["701", "801"];
+    //allData["room"]; 해도 나온다. 시험 문제 낼거임**
+
+
+    // 방법1 : createElement -> select.appendChile()
+    // roomSelect.innerHTML = "";
+    // rooms.forEach((room) => {
+    //     let newOption = document.createElement("option");
+    //     newOption.value = room;
+    //     newOption.textContent = `${room}호`;
+    //     roomSelect.appendChild(newOption);
+    // });
+
+    //방법2 : string -> select.innerHTML
+    // let roomString = "";
+    // rooms.forEach((room) => {
+    //     roomString += `<option value="${room}">${room}호</option>`;
+    // });
+    // roomSelect.innerHTML = roomString;
+
+
+    //방법3 : map()
+    roomSelect.innerHTML = rooms.map((room) => `<option value="${room}">${room}호</option>`).join("");
+
+
+    //이름 초기화하자
+    nameInput.value = "";
+
+    //[다음] 클릭 => 호실, 이름 보관하자 => setPage(4)
+    
+
+
+}

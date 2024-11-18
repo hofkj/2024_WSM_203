@@ -107,12 +107,3 @@ const setCalendar = (date) => {
 changeMonth(0);     //현재 달 출력하자
 setCalendar(currentDate);       //현재 달의 달력 보여주자
 
-
-
-
-
-const completeBtn = document.getElementById("complete-btn");
-
-completeBtn.addEventListener("click", () => {
-    alert("예약 완료"); 
-});
