@@ -11,6 +11,8 @@ const washingmachineSelect = document.getElementById("washingmachine");
 const timeSelect = document.querySelector("#time");
 const roomSelect = document.getElementById("room"); //이거 시험 문제
 const nameInput = document.querySelector("#name");  //**
+const boardContainerDiv = document.getElementsByClassName("board-container")[0]; //***이거 시험 문제 */
+
 
 
 // calendarDiv.style.display = "block";
@@ -50,10 +52,17 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
         //세탁기,시간 번호 기록하자
         newReservation.washingmachine = washingmachineSelect.value;
         newReservation.time = timeSelect.value;
+        newReservations.push(newReservation);
 
         initRoomName();
 
     } else if (page === 4) {            //세탁기 예약 현황표
+        //호실, 이름 기록하자
+        newReservation.room = roomSelect.value;
+        newReservation.name = nameInput.value;
+        reservations.push(newReservation);
+
+        initTable();
 
     }
 }
@@ -61,7 +70,8 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
 let allData;                //모든 초기화 정보 : 세탁기, 시간, 호실 정보
 let weeklyReservations;      //미리 요일별로 지정된 예약 정보
 let newReservation;         //사용자가 입력하고 있는 예약 정보
-let reservation;            //사용자가 예약 완료한 정보들
+let reservations = [];            //사용자가 예약 완료한 정보들
+let reservation;
 
 
 const intiData =  async () => {
@@ -208,7 +218,29 @@ const initRoomName = () => {
     nameInput.value = "";
 
     //[다음] 클릭 => 호실, 이름 보관하자 => setPage(4)
-    
 
 
+
+}
+
+const initTable = () => {
+    let tableString = `
+    <div class="item board-item header">이름</div>
+    <div class="item board-item header">날짜</div>
+    <div class="item board-item header">시간</div>
+    <div class="item board-item header">세탁기</div>
+    <div class="item board-item header">알림</div>
+    <div class="item board-item header">호실</div>
+    `;
+
+    reservations.forEach((reservation) => {
+        tableString += `
+        <div class="item board-item">${reservation.name}</div>
+        <div class="item board-item">${reservation["room"]}호</div>
+        <div class="item board-item">${reservation.date.getFullYear()}년 ${reservation.date.getMonth() + 1}월 ${reservation.date.getDate.getDate()}일</div>
+        <div class="item board-item">${allData.time[reservation.time]}</div>
+        <div class="item board-item">${reservation.washingmachine}</div>
+        <div class="item board-item">${reservation.notification?"🔔":"🔕"}</div>`
+    });
+    boardContainerDiv.innerHTML = tableString;
 }
