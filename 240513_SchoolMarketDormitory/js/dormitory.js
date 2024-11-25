@@ -65,7 +65,7 @@ if(selectionItemDivs.length -1 >= page) {       //4페이지 selection은 없음
         //세탁기,시간 번호 기록하자
         newReservation.washingmachine = washingmachineSelect.value;
         newReservation.time = timeSelect.value;
-        newReservations.push(newReservation);
+        reservations.push(newReservation);
 
         initRoomName();
 
@@ -84,7 +84,6 @@ let allData;                //모든 초기화 정보 : 세탁기, 시간, 호�
 let weeklyReservations;      //미리 요일별로 지정된 예약 정보
 let newReservation;         //사용자가 입력하고 있는 예약 정보
 let reservations = [];            //사용자가 예약 완료한 정보들
-let reservation;
 
 
 const intiData =  async () => {
@@ -170,7 +169,7 @@ const initWashingmachineTime = () => {
             if(newReservation.date.getFullYear() == reservation.date.getFullYear()
             && newReservation.date.getMonth() == reservation.date.getMonth()
             && newReservation.date.getDate() == reservation.date.getDate()) {
-                const {washingmachine, time} = Reservation;
+                const {washingmachine, time} = reservation;
                 const index = allWashingmachineTime[washingmachine].indexOf(String(time));        //원하는 시간 찾아서
                 if(index > -1) {
                     allWashingmachineTime[washingmachine].splice(index, 1);     //그 시간 삭제하자
@@ -261,10 +260,18 @@ const initTable = () => {
         tableString += `
         <div class="item board-item">${reservation.name}</div>
         <div class="item board-item">${reservation["room"]}호</div>
-        <div class="item board-item">${reservation.date.getFullYear()}년 ${reservation.date.getMonth() + 1}월 ${reservation.date.getDate.getDate()}일</div>
+        <div class="item board-item">${reservation.date.getFullYear()}년 ${reservation.date.getMonth() + 1}월 ${reservation.date.getDate()}일</div>
         <div class="item board-item">${allData.time[reservation.time]}</div>
         <div class="item board-item">${reservation.washingmachine}</div>
         <div class="item board-item">${reservation.notification?"🔔":"🔕"}</div>`
     });
     boardContainerDiv.innerHTML = tableString;
+}
+
+const saveReservations = () => {
+    //원래는 백엔드에 reservations 넘겨서 저장하자
+    //백엔드 안배웠으니까 LocalStorage에 저장하자
+    localStorage.setItem("reservations", JSON.stringify(reservations)); //JSON 객체 -> string
+    //저장완료 창 띄우자
+    alert("저장 완료");
 }
