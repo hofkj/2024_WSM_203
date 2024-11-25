@@ -166,6 +166,17 @@ const initWashingmachineTime = () => {
         });
 
         //사용자가 예약한 예약을 보고, 예약된 세탁기와 예약된 시간이 있으면 초기화 항목에서 빼자
+        reservations.forEach((reservation) => {
+            if(newReservation.date.getFullYear() == reservation.date.getFullYear()
+            && newReservation.date.getMonth() == reservation.date.getMonth()
+            && newReservation.date.getDate() == reservation.date.getDate()) {
+                const {washingmachine, time} = Reservation;
+                const index = allWashingmachineTime[washingmachine].indexOf(String(time));        //원하는 시간 찾아서
+                if(index > -1) {
+                    allWashingmachineTime[washingmachine].splice(index, 1);     //그 시간 삭제하자
+                }
+            }
+        });
         // 초기화 항목에서 예약된 시간 뺸 후, 모든 시간이 없는 세탁기는 뺴자
         let washingmachines = Object.keys(allWashingmachineTime).filter((washingmachine) => allWashingmachineTime[washingmachine].length > 0);
 
